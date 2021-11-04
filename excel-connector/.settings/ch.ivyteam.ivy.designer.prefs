@@ -1,0 +1,4 @@
+ch.ivyteam.ivy.designer.preferences.DataClassPreferencePage\:DEFAULT_DATA_CLASS=com.axonivy.connector.excel.Data
+ch.ivyteam.ivy.designer.preferences.DataClassPreferencePage\:DEFAULT_NAMESPACE=com.axonivy.connector.excel
+ch.ivyteam.ivy.project.preferences\:PROJECT_VERSION=93801
+eclipse.preferences.version=1
