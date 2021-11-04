@@ -3,7 +3,7 @@
   <groupId>com.axonivy.connector.excel</groupId>
   <name>excel-connector</name>
   <artifactId>excel-connector-modules</artifactId>
-  <version>9.2.0-SNAPSHOT</version>
+  <version>9.3.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
