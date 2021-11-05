@@ -8,7 +8,7 @@
   <modules>
     <module>excel-connector</module>
     <module>excel-connector-demo</module>
-    <!-- <module>excel-connector-test</module> -->
+    <module>excel-connector-test</module>
   </modules>
 
   <scm>
