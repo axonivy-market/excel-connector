@@ -13,18 +13,17 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
 import ch.ivyteam.ivy.environment.Ivy;
-import ch.ivyteam.ivy.process.engine.IRequestId;
 import ch.ivyteam.ivy.scripting.exceptions.IvyScriptException;
 import ch.ivyteam.ivy.scripting.language.IIvyScriptContext;
 import ch.ivyteam.ivy.scripting.objects.CompositeObject;
 import ch.ivyteam.ivy.scripting.objects.Record;
 import ch.ivyteam.ivy.scripting.objects.Recordset;
 
-public class ReadExcelBean {
+public class ExcelReader {
 
   private boolean addTitleRow = false;
 
-  public CompositeObject perform(IRequestId requestId, CompositeObject in,
+  public CompositeObject perform(CompositeObject in,
           IIvyScriptContext context, String rsParam, String filepathParam) throws Exception {
     Recordset rs = null; // (Recordset) getProcessDataField(context, rsParam);
     String filePath = getFilePath(context, filepathParam);
