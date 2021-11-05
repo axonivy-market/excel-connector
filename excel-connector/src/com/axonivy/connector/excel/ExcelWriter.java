@@ -14,31 +14,26 @@ import ch.ivyteam.ivy.scripting.objects.Recordset;
 
 public class ExcelWriter {
 
-  public void writeExcel(Recordset recordset, String filePath) throws Exception {
-
+  public void execute(Recordset recordset, String filePath) {
     try (OutputStream out = new FileOutputStream(filePath);
-            HSSFWorkbook workbook = new HSSFWorkbook();) {
+            HSSFWorkbook workbook = new HSSFWorkbook()) {
       HSSFSheet sheet = workbook.createSheet();
       HSSFCellStyle cs = workbook.createCellStyle();
 
-      this.setHeaderCells(sheet, recordset, cs);
-      this.setContentCells(sheet, recordset, cs);
+      if (recordset != null) {
+        setHeaderCells(sheet, recordset, cs);
+        setContentCells(sheet, recordset, cs);
+      }
 
       workbook.write(out);
-
     } catch (Exception ex) {
-      // Ivy.log().error(
-      // "WriteExcelBean failed to write output file! Output file path =" +
-      // filePath + ".");
-      // ex.printStackTrace();
-      throw ex;
+      throw new RuntimeException("Could not write excel file to " + filePath, ex);
     }
   }
 
-  private void setHeaderCells(HSSFSheet sheet, Recordset recordset, HSSFCellStyle cellstyle) {
+  private static void setHeaderCells(HSSFSheet sheet, Recordset recordset, HSSFCellStyle cellstyle) {
     HSSFRow row = sheet.createRow(0);
     List<String> colnames = recordset.getKeys();
-
     for (int i = 0; i < colnames.size(); i++) {
       HSSFCell cell = row.createCell(i);
       cell.setCellStyle(cellstyle);
@@ -46,7 +41,7 @@ public class ExcelWriter {
     }
   }
 
-  private void setContentCells(HSSFSheet sheet, Recordset recordset, HSSFCellStyle cellstyle) {
+  private static void setContentCells(HSSFSheet sheet, Recordset recordset, HSSFCellStyle cellstyle) {
     for (int i = 0; i < recordset.size(); i++) {
       HSSFRow row = sheet.createRow(i + 1);
 
@@ -56,7 +51,13 @@ public class ExcelWriter {
 
         Object obj = recordset.getField(i, j);
         if (obj != null) {
-          cell.setCellValue(obj.toString());
+          if (obj instanceof Number) {
+            cell.setCellValue(Double.valueOf(obj.toString())
+                    .doubleValue());
+          } else {
+            cell.setCellValue(obj.toString());
+          }
+
         }
       }
     }
