@@ -1,0 +1,4 @@
+Person #class
+com.axonivy.connector.excel.demo #namespace
+firstname String #field
+lastname String #field

@@ -28,16 +28,18 @@ Rl0 f1 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </elementInfo>
 ' #txt
 Rl0 f1 176 42 112 44 -39 -8 #rect
-Rl0 f7 inParamDecl '<String filePath> param;' #txt
-Rl0 f7 inParamInfo 'filePath.description=File path of the Excel sheet to be read.' #txt
-Rl0 f7 inParamTable 'out.filePath=param.filePath;
+Rl0 f7 inParamDecl '<File excelFile> param;' #txt
+Rl0 f7 inParamInfo 'excelFile.description=File of the Excel sheet to be read.' #txt
+Rl0 f7 inParamTable 'out.filePath=param.excelFile.getAbsolutePath();
 ' #txt
-Rl0 f7 outParamDecl '<> result;' #txt
-Rl0 f7 callSignature call(String) #txt
+Rl0 f7 outParamDecl '<Recordset recordset> result;' #txt
+Rl0 f7 outParamTable 'result.recordset=in.recordset;
+' #txt
+Rl0 f7 callSignature call(File) #txt
 Rl0 f7 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
-        <name>call(String)</name>
+        <name>call(ReadExcel(File))</name>
     </language>
 </elementInfo>
 ' #txt
