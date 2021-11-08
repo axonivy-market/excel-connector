@@ -1,0 +1,6 @@
+ReadExcelData #class
+com.axonivy.connector.excel #namespace
+filePath String #field
+filePath PERSISTENT #fieldModifier
+recordset Recordset #field
+recordset PERSISTENT #fieldModifier
