@@ -16,7 +16,7 @@ import com.axonivy.connector.excel.ExcelWriter;
 import ch.ivyteam.ivy.scripting.objects.DateTime;
 import ch.ivyteam.ivy.scripting.objects.Recordset;
 
-class TestExcelConnector {
+class TestExcelConnectorJavaAPI {
 
   private String excelFilePath;
 

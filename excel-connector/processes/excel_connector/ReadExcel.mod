@@ -35,7 +35,7 @@ Rl0 f7 inParamTable 'out.filePath=param.excelFile.getAbsolutePath();
 Rl0 f7 outParamDecl '<Recordset recordset> result;' #txt
 Rl0 f7 outParamTable 'result.recordset=in.recordset;
 ' #txt
-Rl0 f7 callSignature call(File) #txt
+Rl0 f7 callSignature read(File) #txt
 Rl0 f7 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>

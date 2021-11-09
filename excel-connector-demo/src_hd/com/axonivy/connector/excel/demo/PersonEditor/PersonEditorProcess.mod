@@ -124,7 +124,7 @@ Ps0 f11 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 Ps0 f11 168 202 112 44 -52 -8 #rect
 Ps0 f12 109 224 168 224 #arcP
-Ps0 f13 processCall excel_connector/WriteExcel:call2(Recordset) #txt
+Ps0 f13 processCall excel_connector/WriteExcel:write(Recordset) #txt
 Ps0 f13 requestActionDecl '<Recordset recordset> param;' #txt
 Ps0 f13 requestMappingAction 'param.recordset=in.exportRecordset;
 ' #txt
@@ -183,7 +183,7 @@ Ps0 f26 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 Ps0 f26 75 403 26 26 -32 15 #rect
 Ps0 f27 547 403 26 26 0 12 #rect
-Ps0 f29 processCall excel_connector/ReadExcel:call(File) #txt
+Ps0 f29 processCall excel_connector/ReadExcel:read(File) #txt
 Ps0 f29 requestActionDecl '<File excelFile> param;' #txt
 Ps0 f29 requestMappingAction 'param.excelFile=in.importFile;
 ' #txt

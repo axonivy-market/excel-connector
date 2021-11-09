@@ -17,7 +17,7 @@ import ch.ivyteam.ivy.bpm.exec.client.IvyProcessTest;
 import ch.ivyteam.ivy.scripting.objects.Recordset;
 
 @IvyProcessTest
-public class SubprocessTest{
+public class SubprocessExcelTest{
 
   private static final BpmProcess testeeReadExcel = BpmProcess.path("excel_connector/ReadExcel");
   private static final BpmProcess testeeWriteExcel = BpmProcess.path("excel_connector/WriteExcel");
