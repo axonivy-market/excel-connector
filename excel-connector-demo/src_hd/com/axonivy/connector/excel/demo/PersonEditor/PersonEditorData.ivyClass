@@ -16,3 +16,5 @@ firstname String #field
 firstname PERSISTENT #fieldModifier
 lastname String #field
 lastname PERSISTENT #fieldModifier
+recordsetKeys List<String> #field
+recordsetKeys PERSISTENT #fieldModifier

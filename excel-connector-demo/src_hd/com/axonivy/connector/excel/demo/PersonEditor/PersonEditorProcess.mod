@@ -69,6 +69,9 @@ Ps0 f6 actionTable 'out=in;
 ' #txt
 Ps0 f6 actionCode 'import com.axonivy.connector.excel.demo.Person;
 
+out.recordsetKeys.add("firstname");
+out.recordsetKeys.add("lastname");
+
 Person p = new Person();
 p.firstname = "Louis";
 p.lastname = "Müller";
@@ -112,7 +115,11 @@ Ps0 f11 actionCode 'import com.axonivy.connector.excel.demo.Person;
 out.exportRecordset = new Recordset();
 
 for (Person p : in.persons){
- Record r = new Record(["firstname","lastname"], [p.firstname,p.lastname]);
+ List <Object> values = new List <Object>();
+ for (String key : in.recordsetKeys){
+  values.add(p.get(key));
+ }
+ Record r = new Record(in.recordsetKeys, values);
  out.exportRecordset.add(r);
 }' #txt
 Ps0 f11 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -124,7 +131,7 @@ Ps0 f11 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 Ps0 f11 168 202 112 44 -52 -8 #rect
 Ps0 f12 109 224 168 224 #arcP
-Ps0 f13 processCall excel_connector/WriteExcel:call2(Recordset) #txt
+Ps0 f13 processCall excel_connector/WriteExcel:write(Recordset) #txt
 Ps0 f13 requestActionDecl '<Recordset recordset> param;' #txt
 Ps0 f13 requestMappingAction 'param.recordset=in.exportRecordset;
 ' #txt
@@ -183,7 +190,7 @@ Ps0 f26 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 Ps0 f26 75 403 26 26 -32 15 #rect
 Ps0 f27 547 403 26 26 0 12 #rect
-Ps0 f29 processCall excel_connector/ReadExcel:call(File) #txt
+Ps0 f29 processCall excel_connector/ReadExcel:read(File) #txt
 Ps0 f29 requestActionDecl '<File excelFile> param;' #txt
 Ps0 f29 requestMappingAction 'param.excelFile=in.importFile;
 ' #txt
@@ -205,8 +212,9 @@ Ps0 f31 actionCode 'import com.axonivy.connector.excel.demo.Person;
 
 for(Record r : in.importRecordset.getRecords()){
 	Person p = new Person();
-	p.firstname = r.getField("firstname").toString();
-	p.lastname = r.getField("lastname").toString();
+	for(String key : r.getKeys()){
+		p.set(key, r.getField(key));
+	}
 	out.persons.add(p);
 }' #txt
 Ps0 f31 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -225,12 +233,12 @@ Ps0 f15 actionTable 'out=in;
 Ps0 f15 actionCode 'import com.axonivy.connector.excel.demo.Person;
 
 Person p = new Person();
-p.firstname = in.firstname;
-p.lastname = in.lastname;
-out.persons.add(p);
 
-in.firstname = "";
-in.lastname = "";' #txt
+for(String key : in.recordsetKeys){
+ p.set(key, in.get(key));
+ in.set(key, "");
+}
+out.persons.add(p);' #txt
 Ps0 f15 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
