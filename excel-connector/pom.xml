@@ -14,11 +14,7 @@
 				<groupId>com.axonivy.ivy.ci</groupId>
 				<artifactId>project-build-plugin</artifactId>
 				<version>9.2.2</version>
-				<extensions>true</extensions>
-				<configuration>
-					<ivyVersion>9.3.0</ivyVersion>
-					<engineListPageUrl>https://developer.axonivy.com/download/archive/unstable</engineListPageUrl>
-				</configuration>
+				<extensions>true</extensions>     
 			</plugin>
 		</plugins>
 	</build>
