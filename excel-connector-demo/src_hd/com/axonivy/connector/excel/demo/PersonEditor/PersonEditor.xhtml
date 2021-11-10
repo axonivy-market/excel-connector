@@ -38,16 +38,19 @@
 				<br />
 				<br />
 
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Firstname" for="Firstname" style="float:left" />
+					<p:inputText value="#{data.firstname}" id="Firstname"
+						required="false" style="float:left"/>
 
-				<p:outputLabel value="Firstname" for="Firstname" />
-				<p:inputText value="#{data.firstname}" id="Firstname"
-					required="false" />
-				<p:message for="Firstname" display="icon" />
-				<p:outputLabel value="Name" for="Name" />
-				<p:inputText value="#{data.lastname}" id="Name" required="false" />
-				<p:message for="Name" display="icon" />
-				<p:commandButton id="addPerson" actionListener="#{logic.addPerson}"
-					ajax="false" value="Add Person" update="form" icon="ui-icon-check" />
+					<p:outputLabel value="Lastname" for="Name" style="float:left"/>
+					<p:inputText value="#{data.lastname}" id="Name" required="false" style="float:left"/>
+
+					<p:commandButton id="addPerson" actionListener="#{logic.addPerson}"
+						ajax="false" value="Add Person" update="form" icon="ui-icon-plus" />
+					<p:spacer />
+
+				</h:panelGrid>
 				<br />
 				<br />
 
