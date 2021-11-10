@@ -28,7 +28,7 @@ jobs:
     - name: Build with Maven
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: mvn --batch-mode -D ivy.engine.version=9.3.0 -D ivy.engine.list.url=https://developer.axonivy.com/download/archive/unstable release:prepare release:perform
+      run: mvn --batch-mode -Divy.engine.version=9.3.0 -Divy.engine.list.url=https://developer.axonivy.com/download/archive/unstable release:prepare release:perform
 
     - name: Create pull request
       uses: repo-sync/pull-request@v2
