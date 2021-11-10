@@ -19,7 +19,7 @@ jobs:
         java-version: 11
 
     - name: Build with Maven
-      run: mvn clean verify --batch-mode -D ivy.engine.version=9.3.0 -D ivy.engine.list.url=https://developer.axonivy.com/download/archive/unstable
+      run: mvn clean verify --batch-mode
 
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1

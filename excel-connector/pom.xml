@@ -8,13 +8,18 @@
 	<artifactId>excel-connector</artifactId>
 	<version>9.3.0-SNAPSHOT</version>
 	<packaging>iar</packaging>
+  
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>com.axonivy.ivy.ci</groupId>
 				<artifactId>project-build-plugin</artifactId>
 				<version>9.2.2</version>
-				<extensions>true</extensions>     
+				<extensions>true</extensions>
+        <configuration>
+          <ivyVersion>[9.3.0,]</ivyVersion>
+          <engineDownloadUrl>https://developer.axonivy.com/permalink/nightly/axonivy-engine.zip</engineDownloadUrl>
+        </configuration>
 			</plugin>
 		</plugins>
 	</build>
