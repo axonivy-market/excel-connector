@@ -4,15 +4,16 @@
   <artifactId>excel-connector-modules</artifactId>
   <version>9.3.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <name>excel-connector</name>
 
   <modules>
-    <module>excel-connector</module>
-    <module>excel-connector-demo</module>
-    <module>excel-connector-test</module>
+    <module>${project.name}</module>
+    <module>${project.name}-demo</module>
+    <module>${project.name}-test</module>
   </modules>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/axonivy-market/excel-connector.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/axonivy-market/${project.name}.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
