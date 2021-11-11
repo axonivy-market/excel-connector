@@ -12,7 +12,7 @@
   </modules>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/axonivy-market/${project.name}.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/axonivy-market/excel-connector.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
