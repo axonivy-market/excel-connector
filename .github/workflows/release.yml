@@ -28,7 +28,7 @@ jobs:
     - name: Build with Maven
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: mvn --batch-mode -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/axonivy-market/excel-connector release:prepare release:perform
+      run: mvn --batch-mode -Darguments='-DaltDeploymentRepository=github::default::https://maven.pkg.github.com/axonivy-market/excel-connector' release:prepare release:perform
 
     - name: Create pull request
       uses: repo-sync/pull-request@v2
