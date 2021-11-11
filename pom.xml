@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axonivy.connector.excel</groupId>
   <artifactId>excel-connector-modules</artifactId>
-  <version>9.3.0-SNAPSHOT</version>
+  <version>9.3.0</version>
   <packaging>pom</packaging>
 
   <modules>
@@ -13,7 +13,7 @@
 
   <scm>
     <developerConnection>scm:git:https://github.com/axonivy-market/excel-connector.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>v9.3.0</tag>
   </scm>
 
   <build>
