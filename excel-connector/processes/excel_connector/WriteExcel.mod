@@ -38,6 +38,7 @@ out.recordset=param.recordset;
 ' #txt
 Wl0 f7 outParamDecl '<> result;' #txt
 Wl0 f7 callSignature write(File,Recordset) #txt
+Wl0 f7 @CG|tags connector #txt
 Wl0 f7 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
@@ -60,6 +61,7 @@ Wl0 f1 outParamInfo 'excelFile.description=Created Excel file.' #txt
 Wl0 f1 outParamTable 'result.excelFile=in.excelFile;
 ' #txt
 Wl0 f1 callSignature write(Recordset) #txt
+Wl0 f1 @CG|tags connector #txt
 Wl0 f1 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
