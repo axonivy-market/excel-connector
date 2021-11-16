@@ -39,9 +39,6 @@ Ps0 @PushWFArc f8 '' #zField
 Ps0 @UdEvent f3 '' #zField
 Ps0 @PushWFArc f5 '' #zField
 Ps0 @UdExitEnd f4 '' #zField
-Ps0 @Alternative f12 '' #zField
-Ps0 @PushWFArc f25 '' #zField
-Ps0 @PushWFArc f33 '' #zField
 Ps0 @ErrorBoundaryEvent f34 '' #zField
 Ps0 @GridStep f35 '' #zField
 Ps0 @PushWFArc f36 '' #zField
@@ -284,15 +281,6 @@ Ps0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 Ps0 f3 83 123 26 26 -15 15 #rect
 Ps0 f5 109 136 211 136 #arcP
 Ps0 f4 211 123 26 26 0 12 #rect
-Ps0 f12 104 504 32 32 0 16 #rect
-Ps0 f25 expr in #txt
-Ps0 f25 outCond 'in.importFile.getJavaFile().length() != 0' #txt
-Ps0 f25 129 513 224 438 #arcP
-Ps0 f33 expr in #txt
-Ps0 f33 outCond true #txt
-Ps0 f33 136 520 560 429 #arcP
-Ps0 f33 1 560 520 #addKink
-Ps0 f33 1 0.49145299145299143 0 0 #arcLabel
 Ps0 f34 actionTable 'out=in;
 ' #txt
 Ps0 f34 attachedToRef 17CFF1C40579494A-f29 #txt
@@ -340,10 +328,6 @@ Ps0 f20 mainOut f24 tail #connect
 Ps0 f24 head f11 mainIn #connect
 Ps0 f28 mainOut f8 tail #connect
 Ps0 f8 head f11 mainIn #connect
-Ps0 f12 out f25 tail #connect
-Ps0 f25 head f29 mainIn #connect
-Ps0 f12 out f33 tail #connect
-Ps0 f33 head f27 mainIn #connect
 Ps0 f34 mainOut f36 tail #connect
 Ps0 f36 head f35 mainIn #connect
 Ps0 f35 mainOut f37 tail #connect
