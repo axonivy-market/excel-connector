@@ -167,7 +167,7 @@ import org.primefaces.model.DefaultStreamedContent;
 
 InputStream stream;
 stream = new FileInputStream(in.excelFile.getJavaFile());
-out.streamedExcelFile = new DefaultStreamedContent(stream,"application/vnd.ms-excel","demo_export.xls");' #txt
+out.streamedExcelFile = new DefaultStreamedContent(stream,"application/vnd.ms-excel","demo_export.xlsx");' #txt
 Ps0 f21 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>

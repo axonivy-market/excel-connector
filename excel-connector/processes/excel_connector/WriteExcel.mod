@@ -53,7 +53,7 @@ Wl0 f4 240 80 305 80 #arcP
 Wl0 f0 55 80 128 80 #arcP
 Wl0 f1 inParamDecl '<Recordset recordset> param;' #txt
 Wl0 f1 inParamInfo 'recordset.description=Recordset represents the content of the Excel sheet to be written.' #txt
-Wl0 f1 inParamTable 'out.excelFile=new File("export.xls",true);
+Wl0 f1 inParamTable 'out.excelFile=new File("export.xlsx",true);
 out.recordset=param.recordset;
 ' #txt
 Wl0 f1 outParamDecl '<File excelFile> result;' #txt

@@ -22,7 +22,7 @@ class TestExcelConnectorJavaAPI {
 
   @BeforeEach
   void setup(@TempDir Path tempDir) throws Exception {
-    excelFilePath = tempDir.resolve("myexelfile.xls").toAbsolutePath().toString();
+    excelFilePath = tempDir.resolve("myexelfile.xlsx").toAbsolutePath().toString();
   }
 
   @Test

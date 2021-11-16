@@ -1,24 +1,23 @@
 package com.axonivy.connector.excel;
 
 import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.util.List;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import ch.ivyteam.ivy.scripting.objects.Recordset;
 
 public class ExcelWriter {
 
   public void execute(Recordset recordset, String filePath) {
-    try (OutputStream out = new FileOutputStream(filePath);
-            HSSFWorkbook workbook = new HSSFWorkbook()) {
-      HSSFSheet sheet = workbook.createSheet();
-      HSSFCellStyle cs = workbook.createCellStyle();
+    try (FileOutputStream out = new FileOutputStream(filePath);
+            XSSFWorkbook workbook = new XSSFWorkbook()) {
+      XSSFSheet sheet = workbook.createSheet();
+      XSSFCellStyle cs = workbook.createCellStyle();
 
       if (recordset != null) {
         setHeaderCells(sheet, recordset, cs);
@@ -31,22 +30,22 @@ public class ExcelWriter {
     }
   }
 
-  private static void setHeaderCells(HSSFSheet sheet, Recordset recordset, HSSFCellStyle cellstyle) {
-    HSSFRow row = sheet.createRow(0);
+  private static void setHeaderCells(XSSFSheet sheet, Recordset recordset, XSSFCellStyle cellstyle) {
+    XSSFRow row = sheet.createRow(0);
     List<String> colnames = recordset.getKeys();
     for (int i = 0; i < colnames.size(); i++) {
-      HSSFCell cell = row.createCell(i);
+      XSSFCell cell = row.createCell(i);
       cell.setCellStyle(cellstyle);
       cell.setCellValue(colnames.get(i));
     }
   }
 
-  private static void setContentCells(HSSFSheet sheet, Recordset recordset, HSSFCellStyle cellstyle) {
+  private static void setContentCells(XSSFSheet sheet, Recordset recordset, XSSFCellStyle cellstyle) {
     for (int i = 0; i < recordset.size(); i++) {
-      HSSFRow row = sheet.createRow(i + 1);
+      XSSFRow row = sheet.createRow(i + 1);
 
       for (int j = 0; j < recordset.columnCount(); j++) {
-        HSSFCell cell = row.createCell(j);
+        XSSFCell cell = row.createCell(j);
         cell.setCellStyle(cellstyle);
 
         Object obj = recordset.getField(i, j);
