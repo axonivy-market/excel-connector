@@ -18,3 +18,5 @@ lastname String #field
 lastname PERSISTENT #fieldModifier
 recordsetKeys List<String> #field
 recordsetKeys PERSISTENT #fieldModifier
+isXls Boolean #field
+isXls PERSISTENT #fieldModifier
