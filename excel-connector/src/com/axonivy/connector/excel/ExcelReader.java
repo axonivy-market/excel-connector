@@ -19,24 +19,24 @@ import ch.ivyteam.ivy.scripting.objects.Recordset;
 public class ExcelReader {
 
   public Recordset getRecordset(String filePath) {
-    Recordset recordset = null;
-    Iterator<Row> rowIterator = null;
-
-    if (filePath.endsWith(".xls")) {
-      HSSFWorkbook workbook = openXls(filePath);
-      HSSFSheet sheet = workbook.getSheetAt(0);
-      rowIterator = sheet.rowIterator();
-    } else {
-      XSSFWorkbook workbook = openXlsx(filePath);
-      XSSFSheet sheet = workbook.getSheetAt(0);
-      rowIterator = sheet.rowIterator();
-    }
-
+    Iterator<Row> rowIterator =loadRowIterator(filePath);
     ArrayList<String> headerCells = getHeaderCells(rowIterator);
-    recordset = new Recordset(headerCells);
+    Recordset recordset = new Recordset(headerCells);
     addContentCellsToRecordset(recordset, rowIterator);
 
     return recordset;
+  }
+
+  private static Iterator<Row> loadRowIterator(String filePath) {
+    if (filePath.endsWith(".xls")) {
+      HSSFWorkbook workbook = openXls(filePath);
+      HSSFSheet sheet = workbook.getSheetAt(0);
+      return sheet.rowIterator();
+    } else {
+      XSSFWorkbook workbook = openXlsx(filePath);
+      XSSFSheet sheet = workbook.getSheetAt(0);
+      return sheet.rowIterator();
+    }
   }
 
   private static HSSFWorkbook openXls(String filePath) {

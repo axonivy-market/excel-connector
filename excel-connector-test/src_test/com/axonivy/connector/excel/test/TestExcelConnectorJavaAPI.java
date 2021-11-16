@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -84,6 +85,16 @@ class TestExcelConnectorJavaAPI {
     new ExcelWriter().execute(recordset, excelFilePath);
     Recordset excelRec = new ExcelReader().getRecordset(excelFilePath);
     assertThat(excelRec).isEqualTo(new Recordset());
+  }
+
+  @Test
+  void writeAndRead_xls() throws Exception {
+    excelFilePath = StringUtils.removeEnd(excelFilePath, "x");
+    Recordset recordset = new Recordset();
+    recordset.addColumn("a1", List.of("ad", "sg"));
+    new ExcelWriter().execute(recordset, excelFilePath);
+    Recordset excelRec = new ExcelReader().getRecordset(excelFilePath);
+    assertThat(excelRec).isEqualTo(recordset);
   }
 
 }
