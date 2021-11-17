@@ -10,6 +10,7 @@
     <module>${project.name}</module>
     <module>${project.name}-demo</module>
     <module>${project.name}-test</module>
+    <module>product</module>
   </modules>
 
   <scm>
@@ -38,5 +39,4 @@
       </plugins>
     </pluginManagement>
   </build>
-
 </project>
