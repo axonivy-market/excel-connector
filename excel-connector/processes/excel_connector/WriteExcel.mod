@@ -36,7 +36,10 @@ recordset.description=Recordset represents the content of the Excel sheet to be 
 Wl0 f7 inParamTable 'out.excelFile=param.excelFile;
 out.recordset=param.recordset;
 ' #txt
-Wl0 f7 outParamDecl '<> result;' #txt
+Wl0 f7 outParamDecl '<File excelFile> result;' #txt
+Wl0 f7 outParamInfo 'excelFile.description=Created Excel file.' #txt
+Wl0 f7 outParamTable 'result.excelFile=in.excelFile;
+' #txt
 Wl0 f7 callSignature write(File,Recordset) #txt
 Wl0 f7 @CG|tags connector #txt
 Wl0 f7 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -53,7 +56,7 @@ Wl0 f4 240 80 305 80 #arcP
 Wl0 f0 55 80 128 80 #arcP
 Wl0 f1 inParamDecl '<Recordset recordset> param;' #txt
 Wl0 f1 inParamInfo 'recordset.description=Recordset represents the content of the Excel sheet to be written.' #txt
-Wl0 f1 inParamTable 'out.excelFile=new File("export.xls",true);
+Wl0 f1 inParamTable 'out.excelFile=new File("export.xlsx",true);
 out.recordset=param.recordset;
 ' #txt
 Wl0 f1 outParamDecl '<File excelFile> result;' #txt
