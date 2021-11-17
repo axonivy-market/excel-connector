@@ -4,4 +4,4 @@
 
 Reading and writing Excel files in your business processes. 
 
-Read our [Documentation](product/README.md).
+Read our [Documentation](excel-connector-product/README.md).
