@@ -9,11 +9,11 @@
     <fileSets>
         <fileSet>
             <directory>.</directory>
-            <excludes>
-                <exclude>pom.xml</exclude>
-                <exclude>zip.xml</exclude>
-                <exclude>target/</exclude>
-            </excludes>
+            <includes>
+                <include>product.json</include>
+                <include>README.md</include>
+                <include>**/*.png</include>
+            </includes>
         </fileSet>
     </fileSets>
 </assembly>

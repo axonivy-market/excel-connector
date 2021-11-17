@@ -10,7 +10,7 @@
     <module>${project.name}</module>
     <module>${project.name}-demo</module>
     <module>${project.name}-test</module>
-    <module>product</module>
+    <module>${project.name}-product</module>
   </modules>
 
   <scm>
