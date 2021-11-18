@@ -26,3 +26,9 @@ jobs:
       if: always()
       with:
         files: "*/target/*-reports/TEST*.xml"
+
+    - name: Keep build artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: ivy-archives
+        path: "**/*.iar"
