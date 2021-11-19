@@ -30,7 +30,7 @@ jobs:
     - name: Keep build artifact
       uses: actions/upload-artifact@v2
       with:
-        name: ivy-archives
+        name: ${{ github.event.repository.name }}
         path: |
           **/*.iar
           **/*.zip
