@@ -27,10 +27,9 @@ jobs:
       with:
         files: "*/target/*-reports/TEST*.xml"
 
-    - name: Keep build artifact
+    - name: Archive build artifact
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ github.event.repository.name }}
         path: |
-          **/*.iar
-          **/*.zip
+          */target/*.iar
+          *product/target/*.zip
