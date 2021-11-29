@@ -9,7 +9,7 @@
     <dependency>
       <groupId>com.axonivy.connector.excel</groupId>
       <artifactId>excel-connector</artifactId>
-      <version>[9.3.0-SNAPSHOT,)</version>
+      <version>${project.version}</version>
       <type>iar</type>
     </dependency>
   </dependencies>
@@ -18,12 +18,8 @@
       <plugin>
         <groupId>com.axonivy.ivy.ci</groupId>
         <artifactId>project-build-plugin</artifactId>
-        <version>9.2.2</version>
+        <version>9.3.1</version>
         <extensions>true</extensions>
-        <configuration>
-          <ivyVersion>[9.3.0,]</ivyVersion>
-          <engineDownloadUrl>https://developer.axonivy.com/permalink/nightly/axonivy-engine.zip</engineDownloadUrl>
-        </configuration>
       </plugin>
     </plugins>
   </build>
