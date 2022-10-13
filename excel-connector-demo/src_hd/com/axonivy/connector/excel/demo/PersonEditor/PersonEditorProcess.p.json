@@ -1,8 +1,10 @@
 {
-  "format" : "9.4.20",
+  "format" : "10.0.0",
   "id" : "17CFF1C40579494A",
-  "data" : "com.axonivy.connector.excel.demo.PersonEditor.PersonEditorData",
   "kind" : "HTML_DIALOG",
+  "config" : {
+    "data" : "com.axonivy.connector.excel.demo.PersonEditor.PersonEditorData"
+  },
   "elements" : [ {
       "id" : "f0",
       "type" : "HtmlDialogStart",
