@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axonivy.connector.excel</groupId>
   <artifactId>excel-connector-modules</artifactId>
-  <version>9.4.1-SNAPSHOT</version>
+  <version>10.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>excel-connector</name>
 

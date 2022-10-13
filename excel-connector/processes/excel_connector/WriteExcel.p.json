@@ -1,8 +1,10 @@
 {
-  "format" : "9.4.20",
+  "format" : "10.0.0",
   "id" : "17CF0992EAD1CDCB",
-  "data" : "com.axonivy.connector.excel.WriteExcelData",
   "kind" : "CALLABLE_SUB",
+  "config" : {
+    "data" : "com.axonivy.connector.excel.WriteExcelData"
+  },
   "elements" : [ {
       "id" : "f2",
       "type" : "Script",

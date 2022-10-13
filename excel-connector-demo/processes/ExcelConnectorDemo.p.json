@@ -1,7 +1,9 @@
 {
-  "format" : "9.4.20",
+  "format" : "10.0.0",
   "id" : "17CFF194E102686A",
-  "data" : "com.axonivy.connector.excel.demo.Data",
+  "config" : {
+    "data" : "com.axonivy.connector.excel.demo.Data"
+  },
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
