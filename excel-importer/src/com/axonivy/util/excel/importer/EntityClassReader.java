@@ -44,6 +44,9 @@ public class EntityClassReader {
   }
 
   private String fieldName(String colName) {
+    if (StringUtils.isAllUpperCase(colName)) {
+      return colName.toLowerCase();
+    }
     return StringUtils.uncapitalize(colName);
   }
 
