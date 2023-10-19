@@ -12,6 +12,12 @@
       <artifactId>excel-importer</artifactId>
       <version>${project.version}</version>
       <type>jar</type>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.axonivy.ivy.test</groupId>
