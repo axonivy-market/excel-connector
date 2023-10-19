@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.scripting.dataclass.IDataClassManager;
@@ -28,23 +29,20 @@ public class EntityClassReader {
   }
 
   public IEntityClass getEntity(Path filePath) {
-    Iterator<Row> rowIterator = loadRowIterator(filePath);
-    List<String> headerCells = getHeaderCells(rowIterator);
+    Workbook wb = ExcelLoader.load(filePath);
+
+    List<String> columns = getHeaderCellNames(wb.getSheetAt(0).rowIterator());
     String dataName = StringUtils.substringBeforeLast(filePath.getFileName().toString(), ".");
     String fqName = manager.getDefaultNamespace()+"."+dataName;
     if (manager.findDataClass(fqName) != null) {
       throw new RuntimeException("entity "+fqName+" already exists");
     }
     var entity = manager.createEntityClass(fqName, null);
-    addContentCellsToRecordset(entity, headerCells, rowIterator);
+    createEntityFields(entity, columns, wb.getSheetAt(0).rowIterator());
     return entity;
   }
 
-  private static Iterator<Row> loadRowIterator(Path filePath) {
-    return ExcelLoader.load(filePath).getSheetAt(0).rowIterator();
-  }
-
-  private static List<String> getHeaderCells(Iterator<Row> rowIterator) {
+  private static List<String> getHeaderCellNames(Iterator<Row> rowIterator) {
     List<String> headerCells = new ArrayList<String>();
     if (rowIterator.hasNext()) {
       Row row = rowIterator.next();
@@ -57,7 +55,7 @@ public class EntityClassReader {
     return headerCells;
   }
 
-  private static void addContentCellsToRecordset(IEntityClass entity, List<String> names, Iterator<Row> rowIterator) {
+  private static void createEntityFields(IEntityClass entity, List<String> names, Iterator<Row> rowIterator) {
     if (!rowIterator.hasNext()) {
       return;
     }
