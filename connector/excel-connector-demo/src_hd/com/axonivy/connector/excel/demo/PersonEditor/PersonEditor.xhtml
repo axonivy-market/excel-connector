@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<h:body>
+	<ui:composition template="/layouts/frame-9-right.xhtml">
+		<ui:define name="title">PersonEditor</ui:define>
+		<ui:define name="content">
+
+			<h3>Person Editor with Excel import and export</h3>
+			<p>This demo shows how easy it is to a) import data records from
+				your local Excel files and convert them to Ivy Recordsets and b)
+				export your process data in the form of Ivy Recordsets as Excel
+				files. Both .xls and .xlsx file types are supported. For the import
+				and export of excel files the two subprocesses ReadExcel and
+				WriteExcel are used.</p>
+
+			<h:form enctype="multipart/form-data" id="form">
+				<p:messages></p:messages>
+				<h:panelGrid columns="2">
+					<p:orderList value="#{data.persons}" var="person" responsive="true"
+						style="width:400px" itemValue="#{person}" converter="ivy.ListItem"
+						id="personsList" controlsLocation="right">
+						<f:facet name="caption">Persons</f:facet>
+						<p:column>
+							<b>#{person.lastname}</b> #{person.firstname}</p:column>
+					</p:orderList>
+
+					<p:panelGrid columns="2" layout="grid">
+						<f:facet name="header">
+							<h:outputText value="Enter first and last name to add a person." />
+						</f:facet>
+
+						<p:outputLabel value="Firstname" for="Firstname"
+							style="float:left" />
+						<p:inputText value="#{data.firstname}" id="Firstname"
+							required="false" style="float:left" />
+
+						<p:outputLabel value="Lastname" for="Name" style="float:left" />
+						<p:inputText value="#{data.lastname}" id="Name" required="false"
+							style="float:left" />
+
+						<p:commandButton id="addPerson"
+							actionListener="#{logic.addPerson}" ajax="false"
+							value="Add Person" update="form" icon="ui-icon-plus" />
+						<p:spacer />
+
+					</p:panelGrid>
+
+				</h:panelGrid>
+
+				<p:panelGrid columns="2" layout="grid">
+					<f:facet name="header">
+						<h:outputText
+							value="Choose a local Excel file and then press Import to add the persons to the list. .xls and .xlsx files are supported." />
+					</f:facet>
+					<p:fileUpload value="#{data.importFile}" mode="simple"
+						style="width:400px" skinSimple="true" id="fileUpload" />
+					<p:commandButton value="Import"
+						actionListener="#{logic.importExcel}" ajax="false" id="import"
+						icon="ui-icon-cloud-upload" />
+				</p:panelGrid>
+				<br />
+
+				<p:panelGrid columns="2" layout="grid">
+					<f:facet name="header">
+						<h:outputText
+							value="Press Export depending on the Excel file type you want." />
+					</f:facet>
+					<p:commandButton id="export_xls" ajax="false"
+						actionListener="#{logic.export_xls}" value="Export .xls"
+						update="form" icon="ui-icon-cloud-download">
+						<p:fileDownload value="#{data.streamedExcelFile}" />
+					</p:commandButton>
+					<p:commandButton id="export_xlsx" ajax="false"
+						actionListener="#{logic.export_xlsx}" value="Export .xlsx"
+						update="form" icon="ui-icon-cloud-download">
+						<p:fileDownload value="#{data.streamedExcelFile}" />
+					</p:commandButton>
+				</p:panelGrid>
+				<br />
+
+
+				<div class="command-btns">
+					<p:commandButton id="Done" actionListener="#{logic.close}"
+						value="Done" update="form" icon="ui-icon-check" />
+				</div>
+				<br />
+				<br />
+
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

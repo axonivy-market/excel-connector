@@ -1,0 +1,52 @@
+{
+  "format" : "10.0.0",
+  "id" : "17CFF194E102686A",
+  "config" : {
+    "data" : "com.axonivy.connector.excel.demo.Data"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "excelImportExport.ivp",
+      "config" : {
+        "callSignature" : "excelImportExport",
+        "outLink" : "excelImportExport.ivp",
+        "tags" : "demo"
+      },
+      "visual" : {
+        "at" : { "x" : 104, "y" : 144 },
+        "labelOffset" : { "x" : 53, "y" : 37 }
+      },
+      "connect" : { "id" : "f4", "to" : "f3" }
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 392, "y" : 144 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "DialogCall",
+      "name" : "PersonEditor",
+      "config" : {
+        "dialogId" : "com.axonivy.connector.excel.demo.PersonEditor",
+        "startMethod" : "start()"
+      },
+      "visual" : {
+        "at" : { "x" : 248, "y" : 144 }
+      },
+      "connect" : { "id" : "f2", "to" : "f1" }
+    }, {
+      "id" : "f5",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "This demo shows how easy it is to a) import data records from your local Excel files and convert them to Ivy Recordsets and",
+        "b) export your process data in the form of Ivy Recordsets as Excel files. Both .xls and .xlsx file types are supported.",
+        "For the import and export of excel files the two subprocesses ReadExcel and WriteExcel are used."
+      ],
+      "visual" : {
+        "at" : { "x" : 368, "y" : 56 },
+        "size" : { "width" : 688, "height" : 60 }
+      }
+    } ]
+}

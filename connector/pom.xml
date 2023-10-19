@@ -1,20 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-<<<<<<< HEAD
-  <groupId>com.axonivy.market</groupId><!-- your group id: e.g. com.axonivy.connector.<myconnector> or com.axonivy.utils.<myutil> -->
-  <name>my-product</name><!-- fill your product name -->
-  <artifactId>my-product-modules</artifactId><!-- fill your product name + a "-modules" postfix -->
-  <version>10.0.0-SNAPSHOT</version><!-- identicate your minimal compliant ivy version with the first 2 digits -->
-=======
   <groupId>com.axonivy.connector.excel</groupId>
-  <artifactId>excel-modules</artifactId>
+  <artifactId>excel-connector-modules</artifactId>
   <version>10.0.1-SNAPSHOT</version>
->>>>>>> 0713f28 (refactor: split moduleset for importer and connector)
   <packaging>pom</packaging>
+  <name>excel-connector</name>
 
   <modules>
-    <module>connector</module>
-    <module>importer</module>
+    <module>${project.name}</module>
+    <module>${project.name}-demo</module>
+    <module>${project.name}-test</module>
+    <module>${project.name}-product</module>
   </modules>
 
   <scm>
@@ -43,5 +39,4 @@
       </plugins>
     </pluginManagement>
   </build>
-
 </project>

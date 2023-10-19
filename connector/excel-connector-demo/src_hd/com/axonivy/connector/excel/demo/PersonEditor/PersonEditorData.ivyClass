@@ -1,0 +1,22 @@
+PersonEditorData #class
+com.axonivy.connector.excel.demo.PersonEditor #namespace
+persons java.util.List<com.axonivy.connector.excel.demo.Person> #field
+persons PERSISTENT #fieldModifier
+exportRecordset Recordset #field
+exportRecordset PERSISTENT #fieldModifier
+excelFile File #field
+excelFile PERSISTENT #fieldModifier
+streamedExcelFile org.primefaces.model.StreamedContent #field
+streamedExcelFile PERSISTENT #fieldModifier
+importFile File #field
+importFile PERSISTENT #fieldModifier
+importRecordset Recordset #field
+importRecordset PERSISTENT #fieldModifier
+firstname String #field
+firstname PERSISTENT #fieldModifier
+lastname String #field
+lastname PERSISTENT #fieldModifier
+recordsetKeys List<String> #field
+recordsetKeys PERSISTENT #fieldModifier
+isXls Boolean #field
+isXls PERSISTENT #fieldModifier

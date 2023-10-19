@@ -1,0 +1,95 @@
+{
+  "format" : "10.0.0",
+  "id" : "17CF0992EAD1CDCB",
+  "kind" : "CALLABLE_SUB",
+  "config" : {
+    "data" : "com.axonivy.connector.excel.WriteExcelData"
+  },
+  "elements" : [ {
+      "id" : "f2",
+      "type" : "Script",
+      "name" : "call WriteExcel",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.connector.excel.ExcelWriter;",
+            "",
+            "new ExcelWriter().execute(in.recordset, in.excelFile.getAbsolutePath());"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 184, "y" : 80 }
+      },
+      "connect" : { "id" : "f4", "to" : "f3" }
+    }, {
+      "id" : "f7",
+      "type" : "CallSubStart",
+      "name" : "call(WriteExcel(File,Recordset))",
+      "config" : {
+        "callSignature" : "write",
+        "input" : {
+          "params" : [
+            { "name" : "excelFile", "type" : "File", "desc" : "File path of the Excel sheet to be written." },
+            { "name" : "recordset", "type" : "Recordset", "desc" : "Recordset represents the content of the Excel sheet to be written." }
+          ],
+          "map" : {
+            "out.excelFile" : "param.excelFile",
+            "out.recordset" : "param.recordset"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "excelFile", "type" : "File", "desc" : "Created Excel file." }
+          ],
+          "map" : {
+            "result.excelFile" : "in.excelFile"
+          }
+        },
+        "tags" : "connector"
+      },
+      "visual" : {
+        "at" : { "x" : 40, "y" : 80 },
+        "labelOffset" : { "x" : 92, "y" : 37 },
+        "icon" : "res:/webContent/icons/excel-icon.png?small"
+      },
+      "connect" : { "id" : "f0", "to" : "f2" }
+    }, {
+      "id" : "f3",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 320, "y" : 80 }
+      }
+    }, {
+      "id" : "f1",
+      "type" : "CallSubStart",
+      "name" : "call(WriteExcel(Recordset))",
+      "config" : {
+        "callSignature" : "write",
+        "input" : {
+          "params" : [
+            { "name" : "recordset", "type" : "Recordset", "desc" : "Recordset represents the content of the Excel sheet to be written." }
+          ],
+          "map" : {
+            "out.excelFile" : "new File(\"export.xlsx\",true)",
+            "out.recordset" : "param.recordset"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "excelFile", "type" : "File", "desc" : "Created Excel file." }
+          ],
+          "map" : {
+            "result.excelFile" : "in.excelFile"
+          }
+        },
+        "tags" : "connector"
+      },
+      "visual" : {
+        "at" : { "x" : 48, "y" : 200 },
+        "labelOffset" : { "x" : 75, "y" : 37 },
+        "icon" : "res:/webContent/icons/excel-icon.png?small"
+      },
+      "connect" : { "id" : "f5", "to" : "f2" }
+    } ]
+}

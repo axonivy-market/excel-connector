@@ -1,0 +1,6 @@
+WriteExcelData #class
+com.axonivy.connector.excel #namespace
+excelFile File #field
+excelFile PERSISTENT #fieldModifier
+recordset Recordset #field
+recordset PERSISTENT #fieldModifier
