@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
 
@@ -31,14 +32,17 @@ public class EntityClassReader {
   public IEntityClass getEntity(Path filePath) {
     Workbook wb = ExcelLoader.load(filePath);
 
-    List<String> columns = getHeaderCellNames(wb.getSheetAt(0).rowIterator());
+    List<String> headers = getHeaderCellNames(wb.getSheetAt(0).rowIterator());
     String dataName = StringUtils.substringBeforeLast(filePath.getFileName().toString(), ".");
     String fqName = manager.getDefaultNamespace()+"."+dataName;
     if (manager.findDataClass(fqName) != null) {
       throw new RuntimeException("entity "+fqName+" already exists");
     }
     var entity = manager.createEntityClass(fqName, null);
-    createEntityFields(entity, columns, wb.getSheetAt(0).rowIterator());
+    var columns =  createEntityFields(headers, wb.getSheetAt(0).rowIterator());
+    columns.stream().forEachOrdered(col -> {
+      entity.addField(col.name(), col.type().getName());
+    });
     return entity;
   }
 
@@ -55,9 +59,10 @@ public class EntityClassReader {
     return headerCells;
   }
 
-  private static void createEntityFields(IEntityClass entity, List<String> names, Iterator<Row> rowIterator) {
+  private static List<Column> createEntityFields(List<String> names, Iterator<Row> rowIterator) {
+    List<Column> columns = new ArrayList<>();
     if (!rowIterator.hasNext()) {
-      return;
+      return List.of();
     }
     Row row = rowIterator.next();
     Iterator<Cell> cellIterator = row.cellIterator();
@@ -65,21 +70,27 @@ public class EntityClassReader {
     while (cellIterator.hasNext()) {
       Cell cell = cellIterator.next();
       var name = StringUtils.uncapitalize(names.get(cellNo));
-      switch (cell.getCellType()) {
-        case NUMERIC:
-          entity.addField(name, Float.class.getName());
-          break;
-        case STRING:
-          entity.addField(name, String.class.getName());
-          break;
-        case BOOLEAN:
-          entity.addField(name, Boolean.class.getName());
-          break;
-        default:
-          entity.addField(name, String.class.getName());
-          break;
-      }
+      var column = toColumn(name, cell.getCellType());
+      columns.add(column);
       cellNo++;
     }
+    return columns;
+  }
+
+  private static Column toColumn(String name, CellType type) {
+    switch (type) {
+      case NUMERIC:
+        return new Column(name, Float.class);
+      case STRING:
+        return new Column(name, String.class);
+      case BOOLEAN:
+        return new Column(name, Boolean.class);
+      default:
+        return new Column(name, String.class);
+    }
+  }
+
+  private record Column(String name, Class<?> type) {
+
   }
 }
