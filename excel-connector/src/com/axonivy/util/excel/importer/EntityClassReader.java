@@ -1,4 +1,4 @@
-package com.axonivy.connector.excel;
+package com.axonivy.util.excel.importer;
 
 import java.io.File;
 import java.io.FileInputStream;

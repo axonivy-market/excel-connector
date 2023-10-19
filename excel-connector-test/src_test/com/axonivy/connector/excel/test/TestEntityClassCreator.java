@@ -11,7 +11,7 @@ import java.nio.file.StandardCopyOption;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import com.axonivy.connector.excel.EntityClassReader;
+import com.axonivy.util.excel.importer.EntityClassReader;
 
 import ch.ivyteam.ivy.environment.IvyTest;
 
