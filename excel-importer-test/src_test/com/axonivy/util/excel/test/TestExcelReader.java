@@ -24,10 +24,11 @@ class TestExcelReader {
     List<Column> columns = ExcelReader.parseColumns(wb.getSheetAt(0));
     assertThat(columns).extracting(Column::name)
       .contains("Firstname", "Lastname");
-    assertThat(columns.get(0))
-      .isEqualTo(new Column("Firstname", String.class));
-    assertThat(columns.get(3))
-      .isEqualTo(new Column("ZIP", Float.class));
+    assertThat(columns).contains(
+      new Column("Firstname", String.class),
+      new Column("ZIP", Float.class),
+      new Column("Birthdate", Float.class) // should be a date
+    );
   }
 
 }
