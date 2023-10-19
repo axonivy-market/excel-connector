@@ -1,8 +1,8 @@
 package com.axonivy.util.excel.importer;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -34,10 +34,10 @@ public class EntityClassReader {
     this.manager = manager;
   }
 
-  public IEntityClass getEntity(String filePath) {
+  public IEntityClass getEntity(Path filePath) {
     Iterator<Row> rowIterator = loadRowIterator(filePath);
     List<String> headerCells = getHeaderCells(rowIterator);
-    String dataName = StringUtils.substringBeforeLast(new File(filePath).getName(), ".");
+    String dataName = StringUtils.substringBeforeLast(filePath.getFileName().toString(), ".");
     String fqName = manager.getDefaultNamespace()+"."+dataName;
     if (manager.findDataClass(fqName) != null) {
       throw new RuntimeException("entity "+fqName+" already exists");
@@ -47,8 +47,8 @@ public class EntityClassReader {
     return entity;
   }
 
-  private static Iterator<Row> loadRowIterator(String filePath) {
-    if (filePath.endsWith(".xls")) {
+  private static Iterator<Row> loadRowIterator(Path filePath) {
+    if (filePath.getFileName().endsWith(".xls")) {
       HSSFWorkbook workbook = openXls(filePath);
       HSSFSheet sheet = workbook.getSheetAt(0);
       return sheet.rowIterator();
@@ -59,8 +59,8 @@ public class EntityClassReader {
     }
   }
 
-  private static HSSFWorkbook openXls(String filePath) {
-    try (InputStream input = new FileInputStream(filePath);
+  private static HSSFWorkbook openXls(Path filePath) {
+    try (InputStream input = Files.newInputStream(filePath);
             POIFSFileSystem fs = new POIFSFileSystem(input);
             HSSFWorkbook workbook = new HSSFWorkbook(fs);) {
       return workbook;
@@ -69,9 +69,9 @@ public class EntityClassReader {
     }
   }
 
-  private static XSSFWorkbook openXlsx(String filePath) {
-    try (FileInputStream input = new FileInputStream(filePath);
-            XSSFWorkbook workbook = new XSSFWorkbook(input);) {
+  private static XSSFWorkbook openXlsx(Path filePath) {
+    try (InputStream input = Files.newInputStream(filePath);
+          XSSFWorkbook workbook = new XSSFWorkbook(input);) {
       return workbook;
     } catch (Exception ex) {
       throw new RuntimeException("Could not read excel file from " + filePath, ex);
