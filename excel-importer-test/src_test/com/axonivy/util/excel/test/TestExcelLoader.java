@@ -11,9 +11,6 @@ import org.junit.jupiter.api.io.TempDir;
 
 import com.axonivy.util.excel.importer.ExcelLoader;
 
-import ch.ivyteam.ivy.environment.IvyTest;
-
-@IvyTest
 public class TestExcelLoader {
 
   @Test
