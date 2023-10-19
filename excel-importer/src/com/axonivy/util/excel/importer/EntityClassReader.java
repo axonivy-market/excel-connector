@@ -1,20 +1,13 @@
 package com.axonivy.util.excel.importer;
 
-import java.io.InputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.scripting.dataclass.IDataClassManager;
@@ -48,34 +41,7 @@ public class EntityClassReader {
   }
 
   private static Iterator<Row> loadRowIterator(Path filePath) {
-    if (filePath.getFileName().endsWith(".xls")) {
-      HSSFWorkbook workbook = openXls(filePath);
-      HSSFSheet sheet = workbook.getSheetAt(0);
-      return sheet.rowIterator();
-    } else {
-      XSSFWorkbook workbook = openXlsx(filePath);
-      XSSFSheet sheet = workbook.getSheetAt(0);
-      return sheet.rowIterator();
-    }
-  }
-
-  private static HSSFWorkbook openXls(Path filePath) {
-    try (InputStream input = Files.newInputStream(filePath);
-            POIFSFileSystem fs = new POIFSFileSystem(input);
-            HSSFWorkbook workbook = new HSSFWorkbook(fs);) {
-      return workbook;
-    } catch (Exception ex) {
-      throw new RuntimeException("Could not read excel file from " + filePath, ex);
-    }
-  }
-
-  private static XSSFWorkbook openXlsx(Path filePath) {
-    try (InputStream input = Files.newInputStream(filePath);
-          XSSFWorkbook workbook = new XSSFWorkbook(input);) {
-      return workbook;
-    } catch (Exception ex) {
-      throw new RuntimeException("Could not read excel file from " + filePath, ex);
-    }
+    return ExcelLoader.load(filePath).getSheetAt(0).rowIterator();
   }
 
   private static List<String> getHeaderCells(Iterator<Row> rowIterator) {
