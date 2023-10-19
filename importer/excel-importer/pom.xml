@@ -5,15 +5,171 @@
   <groupId>com.axonivy.util.excel</groupId>
   <artifactId>excel-importer</artifactId>
   <version>10.0.1-SNAPSHOT</version>
-  <packaging>iar</packaging>
+   <packaging>eclipse-plugin</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.compiler.compliance>17</java.compiler.compliance>
+    <tycho.version>3.0.4</tycho.version>
+    <maven.scm.plugin>2.0.0-M3</maven.scm.plugin>
+    <ivy.release>lts-10.0</ivy.release>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>ivy.nightly.release</id>
+      <layout>p2</layout>
+      <url>https://download.axonivy.rocks/p2/${ivy.release}/</url>
+    </repository>
+  </repositories>
+
   <build>
+    <testSourceDirectory>test</testSourceDirectory>
     <plugins>
       <plugin>
-        <groupId>com.axonivy.ivy.ci</groupId>
-        <artifactId>project-build-plugin</artifactId>
-        <version>10.0.6</version>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho.version}</version>
         <extensions>true</extensions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${java.compiler.compliance}</source>
+          <target>${java.compiler.compliance}</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.20</version>
+        <executions>
+          <execution>
+            <id>unit.test</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-compiler-plugin</artifactId>
+          <configuration>
+            <source>${java.compiler.compliance}</source>
+            <target>${java.compiler.compliance}</target>
+            <!-- ignore access restriction: as we use an internal JAXB interfaces -->
+            <compilerArgument>-err:none</compilerArgument>
+          </configuration>
+          <executions>
+            <execution>
+              <id>default-testCompile</id>
+              <phase>never</phase>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>target-platform-configuration</artifactId>
+          <version>${tycho.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.6.1</version>
+          <executions>
+            <execution>
+              <id>compile.embedded.test.sources</id>
+              <phase>test-compile</phase>
+              <goals>
+                <goal>testCompile</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>3.0.0-M1</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-compiler-plugin</artifactId>
+                    <versionRange>[0.23.1,)</versionRange>
+                    <goals>
+                      <goal>compile</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-packaging-plugin</artifactId>
+                    <versionRange>[0.23.1,)</versionRange>
+                    <goals>
+                      <goal>validate-version</goal>
+                      <goal>validate-id</goal>
+                      <goal>build-qualifier</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
+
+  <profiles>
+    <profile>
+      <id>ivy.package.linux64</id>
+      <activation>
+        <property>
+          <name>ivy.package.linux64</name>
+          <!-- (disabled by default, only activated if parameter "ivy.package.linux64" is set to "true") -->
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>target-platform-configuration</artifactId>
+            <configuration>
+              <environments combine.children="append">
+                <environment>
+                  <os>linux</os>
+                  <ws>gtk</ws>
+                  <arch>x86_64</arch>
+                </environment>
+              </environments>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
