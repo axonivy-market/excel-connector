@@ -1,0 +1,25 @@
+{
+  "installers": [
+    {
+      "id": "maven-dropins",
+      "data": {
+        "dependencies": [
+          {
+            "groupId": "com.axonivy.util.excel",
+            "artifactId": "excel-importer",
+            "version": "${version}"
+          }
+        ],
+        "repositories": [
+          {
+            "id": "maven.axonivy.com",
+            "url": "https://maven.axonivy.com",
+            "snapshots": {
+              "enabled": "true"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
