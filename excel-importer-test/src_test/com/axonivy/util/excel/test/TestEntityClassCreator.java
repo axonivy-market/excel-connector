@@ -1,4 +1,4 @@
-package com.axonivy.connector.excel.test;
+package com.axonivy.util.excel.test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
