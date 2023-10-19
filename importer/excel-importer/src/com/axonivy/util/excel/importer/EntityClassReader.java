@@ -34,7 +34,6 @@ public class EntityClassReader {
     this.manager = manager;
   }
 
-  @SuppressWarnings("restriction")
   public IEntityClass getEntity(String filePath) {
     Iterator<Row> rowIterator = loadRowIterator(filePath);
     List<String> headerCells = getHeaderCells(rowIterator);
@@ -45,7 +44,6 @@ public class EntityClassReader {
     }
     var entity = manager.createEntityClass(fqName, null);
     addContentCellsToRecordset(entity, headerCells, rowIterator);
-    entity.save();
     return entity;
   }
 
