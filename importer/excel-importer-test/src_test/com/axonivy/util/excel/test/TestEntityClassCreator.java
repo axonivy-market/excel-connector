@@ -26,7 +26,7 @@ public class TestEntityClassCreator {
     Path path = dir.resolve("customers.xlsx");
     loadTo(path, "sample.xlsx");
 
-    var entity = reader.getEntity(path.toFile().toString());
+    var entity = reader.getEntity(path);
     assertThat(entity).isNotNull();
   }
 
