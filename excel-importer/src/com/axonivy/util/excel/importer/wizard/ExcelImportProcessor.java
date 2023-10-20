@@ -22,6 +22,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import com.axonivy.util.excel.importer.EntityClassReader;
 import com.axonivy.util.excel.importer.EntityDataLoader;
 import com.axonivy.util.excel.importer.ExcelLoader;
+import com.axonivy.util.excel.importer.ProcessDrawer;
 
 import ch.ivyteam.eclipse.util.EclipseUtil;
 import ch.ivyteam.eclipse.util.MonitorUtil;
@@ -113,6 +114,9 @@ public class ExcelImportProcessor implements IWizardSupport, IRunnableWithProgre
     EntityDataLoader loader = new EntityDataLoader(ivyEntities);
     loader.createTable(newEntity);
     loader.load(sheet, newEntity);
+
+    ProcessDrawer drawer = new ProcessDrawer(manager.getProject());
+    drawer.drawManager(newEntity);
   }
 
   String getSelectedSourceProjectName() {
