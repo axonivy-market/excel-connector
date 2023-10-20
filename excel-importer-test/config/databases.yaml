@@ -1,1 +1,5 @@
 Databases:
+  inMemory:
+    Url: jdbc:hsqldb:mem:oblivion
+    Driver: org.hsqldb.jdbc.JDBCDriver
+    Password: ${decrypt:}
