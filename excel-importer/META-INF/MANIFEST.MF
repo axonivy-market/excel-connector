@@ -16,5 +16,6 @@ Require-Bundle: ch.ivyteam.ivy.scripting.dataclass,
  ch.ivyteam.swt;resolution:=optional,
  ch.ivyteam.ivy.designer.ide;resolution:=optional,
  ch.ivyteam.lib.poi,
- ch.ivyteam.lib.apache.commons.lang3
+ ch.ivyteam.lib.apache.commons.lang3,
+ javax.persistence
 Bundle-ActivationPolicy: lazy
