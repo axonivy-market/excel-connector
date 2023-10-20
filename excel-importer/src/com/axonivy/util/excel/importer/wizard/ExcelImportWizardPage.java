@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.jface.wizard.IWizardPage;
@@ -42,6 +43,7 @@ public class ExcelImportWizardPage extends WizardPage implements IWizardPage, Li
     public final Combo destinationNameField;
     public final Combo sourceProjectField;
     public final Button destinationBrowseButton;
+    public final Combo persistence;
 
     public ExcelUi(Composite parent) {
       super(parent, SWT.NONE);
@@ -51,24 +53,30 @@ public class ExcelImportWizardPage extends WizardPage implements IWizardPage, Li
       setLayout(layout);
       setLayoutData(new GridData(272));
 
+      Label destinationLabel = new Label(this, 0);
+      destinationLabel.setText("From file");
+      destinationNameField = new Combo(this, 2052);
+      var dataDest = new GridData(768);
+      dataDest.widthHint = 250;
+      destinationNameField.setLayoutData(dataDest);
+      destinationBrowseButton = new Button(this, 8);
+      destinationBrowseButton.setText("Browse ...");
+
       Label sourceLabel = new Label(this, 0);
       sourceLabel.setText("Project");
       this.sourceProjectField = new Combo(this, 2060);
-
       GridData data = new GridData(768);
       data.widthHint = 250;
       data.horizontalSpan = 2;
       sourceProjectField.setLayoutData(data);
 
-      Label destinationLabel = new Label(this, 0);
-      destinationLabel.setText("From file");
-      destinationNameField = new Combo(this, 2052);
-
-      data = new GridData(768);
-      data.widthHint = 250;
-      destinationNameField.setLayoutData(data);
-      destinationBrowseButton = new Button(this, 8);
-      destinationBrowseButton.setText("Browse ...");
+      Label unitLabel = new Label(this, SWT.NONE);
+      unitLabel.setText("Persistence");
+      this.persistence = new Combo(this, 2060);
+      GridData data3 = new GridData(768);
+      data3.widthHint = 250;
+      data3.horizontalSpan = 2;
+      persistence.setLayoutData(data3);
     }
   }
 
@@ -91,12 +99,15 @@ public class ExcelImportWizardPage extends WizardPage implements IWizardPage, Li
       ui.sourceProjectField.add(projectName);
     }
     ui.sourceProjectField.setText(processor.getSelectedSourceProjectName());
-    ui.sourceProjectField.addListener(24, this);
-    ui.sourceProjectField.addListener(13, this);
+    ui.sourceProjectField.addListener(SWT.Modify, this);
+    ui.sourceProjectField.addListener(SWT.Selection, this);
 
-    ui.destinationNameField.addListener(24, this);
-    ui.destinationNameField.addListener(13, this);
-    ui.destinationBrowseButton.addListener(13, this);
+    ui.destinationNameField.addListener(SWT.Modify, this);
+    ui.destinationNameField.addListener(SWT.Selection, this);
+    ui.destinationBrowseButton.addListener(SWT.Selection, this);
+
+    ui.persistence.addListener(SWT.Modify, this);
+    ui.persistence.addListener(SWT.Selection, this);
 
     setButtonLayoutData(ui.destinationBrowseButton);
     setControl(ui);
@@ -107,7 +118,7 @@ public class ExcelImportWizardPage extends WizardPage implements IWizardPage, Li
     Widget source = event.widget;
     if (source.equals(ui.destinationBrowseButton)) {
       handleDestinationBrowseButtonPressed();
-    } else if (source.equals(ui.sourceProjectField) || source.equals(ui.destinationNameField)) {
+    } else {
       handleInputChanged();
     }
   }
@@ -122,8 +133,18 @@ public class ExcelImportWizardPage extends WizardPage implements IWizardPage, Li
 
   protected void handleInputChanged() {
     var status = WizardStatus.createOkStatus();
+
     status.merge(processor.setImportFile(ui.destinationNameField.getText()));
-    status.merge(processor.setSource(ui.sourceProjectField.getText()));
+
+    String newProject = ui.sourceProjectField.getText();
+    var sameProject = Objects.equals(processor.getSelectedSourceProjectName(), newProject);
+    status.merge(processor.setSource(newProject));
+    if (!sameProject) {
+      ui.persistence.setItems(processor.units().toArray(String[]::new)); // update
+    }
+
+    status.merge(processor.setPersistence(ui.persistence.getText()));
+
     setPageComplete(status.isLowerThan(WizardStatus.ERROR));
     if (status.isOk()) {
       setMessage(processor.getWizardPageOkMessage(PAGE_ID), 0);
