@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: excel-connector-test
+Bundle-SymbolicName: excel-connector-test
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: excel.connector.test
+Export-Package: com.axonivy.connector.excel.test
+Require-Bundle: ch.ivyteam.ivy.scripting.dataclass
