@@ -6,12 +6,24 @@
   <artifactId>excel-connector</artifactId>
   <version>10.0.1-SNAPSHOT</version>
   <packaging>iar</packaging>
+  <properties>
+    <project.build.plugin.version>10.0.16</project.build.plugin.version>
+  </properties>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>sonatype</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <snapshots>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
   <build>
     <plugins>
       <plugin>
         <groupId>com.axonivy.ivy.ci</groupId>
         <artifactId>project-build-plugin</artifactId>
-        <version>10.0.6</version>
+        <version>${project.build.plugin.version}</version>
         <extensions>true</extensions>
       </plugin>
     </plugins>
