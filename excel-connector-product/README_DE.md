@@ -1,8 +1,10 @@
-# Excel Connector
-Axon Ivy's **Microsoft Excel** connector helps you accelerate process automation initiatives by reading and writing MS Excel files in your business process. This connector:
+# Excel Konnektor
+Der **Axon Ivy Microsoft Excel Konnektor** erleichtert deine Prozessautomatisierung, indem er eine einfach zu bedienende Interaktion mit MS Excel-Dateien ermöglicht. Zu den wichtigsten Funktionen gehören:
 
-- Allows you to import a local MS Excel file and convert it into any Ivy Recordset
-- Enables the export of Ivy Recordsets to an MS Excel file
+- **Excel-Datei-Import**: Konvertiere eine lokale MS Excel-Datei in ein beliebiges Ivy Recordset, um eine einfache Datenmanipulation in Deinem Geschäftsprozess zu ermöglichen.
+- **Excel-Datei-Export**: Exportiere Ivy Recordsets zurück in eine MS Excel-Datei, um effiziente Datenausgabe für die externe Nutzung sicherzustellen.
+
+Dieser Konnektor integriert MS Excel in Deine automatisierten Workflows und erleichtert das Verwalten von Datenflüssen zwischen Deinen Prozessen und Tabellen.
 
 ## Demo
 
