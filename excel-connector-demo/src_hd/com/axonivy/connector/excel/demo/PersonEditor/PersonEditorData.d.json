@@ -1,0 +1,47 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "PersonEditorData",
+  "namespace" : "com.axonivy.connector.excel.demo.PersonEditor",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "persons",
+    "type" : "java.util.List<com.axonivy.connector.excel.demo.Person>",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "exportRecordset",
+    "type" : "Recordset",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "excelFile",
+    "type" : "File",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "streamedExcelFile",
+    "type" : "org.primefaces.model.StreamedContent",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "importFile",
+    "type" : "File",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "importRecordset",
+    "type" : "Recordset",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "firstname",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "lastname",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "recordsetKeys",
+    "type" : "List<String>",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "isXls",
+    "type" : "Boolean",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}
