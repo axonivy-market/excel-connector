@@ -5,6 +5,9 @@
   <version>12.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>excel-connector</name>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
   <modules>
     <module>${project.name}</module>
