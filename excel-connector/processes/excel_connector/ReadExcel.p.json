@@ -1,5 +1,5 @@
 {
-  "format" : "10.0.0",
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
   "id" : "17CF0967FCDFADEC",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -21,13 +21,15 @@
       "visual" : {
         "at" : { "x" : 232, "y" : 64 }
       },
-      "connect" : { "id" : "f5", "to" : "f3" }
+      "connect" : [
+        { "id" : "f5", "to" : "f3" }
+      ]
     }, {
       "id" : "f7",
       "type" : "CallSubStart",
       "name" : "call(ReadExcel(File))",
       "config" : {
-        "callSignature" : "read",
+        "signature" : "read",
         "input" : {
           "params" : [
             { "name" : "excelFile", "type" : "File", "desc" : "File of the Excel sheet to be read." }
@@ -38,20 +40,24 @@
         },
         "result" : {
           "params" : [
-            { "name" : "recordset", "type" : "Recordset" }
+            { "name" : "recordset", "type" : "Recordset", "desc" : "" }
           ],
           "map" : {
             "result.recordset" : "in.recordset"
           }
-        },
-        "tags" : "connector"
+        }
       },
+      "tags" : [
+        "connector"
+      ],
       "visual" : {
         "at" : { "x" : 88, "y" : 64 },
         "labelOffset" : { "x" : 58, "y" : 37 },
         "icon" : "res:/webContent/icons/excel-icon.png?small"
       },
-      "connect" : { "id" : "f0", "to" : "f1" }
+      "connect" : [
+        { "id" : "f0", "to" : "f1" }
+      ]
     }, {
       "id" : "f3",
       "type" : "CallSubEnd",

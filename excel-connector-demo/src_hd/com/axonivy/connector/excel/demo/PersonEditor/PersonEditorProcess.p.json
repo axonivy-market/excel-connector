@@ -1,5 +1,5 @@
 {
-  "format" : "10.0.0",
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
   "id" : "17CFF1C40579494A",
   "kind" : "HTML_DIALOG",
   "config" : {
@@ -10,14 +10,16 @@
       "type" : "HtmlDialogStart",
       "name" : "start()",
       "config" : {
-        "callSignature" : "start",
+        "signature" : "start",
         "guid" : "17CFF1C405BEC8A7"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 64 },
         "labelOffset" : { "x" : 12, "y" : 35 }
       },
-      "connect" : { "id" : "f7", "to" : "f6" }
+      "connect" : [
+        { "id" : "f7", "to" : "f6" }
+      ]
     }, {
       "id" : "f1",
       "type" : "HtmlDialogEnd",
@@ -56,7 +58,9 @@
       "visual" : {
         "at" : { "x" : 224, "y" : 64 }
       },
-      "connect" : { "id" : "f2", "to" : "f1" }
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
     }, {
       "id" : "f9",
       "type" : "HtmlDialogEnd",
@@ -88,17 +92,16 @@
       "visual" : {
         "at" : { "x" : 224, "y" : 224 }
       },
-      "connect" : { "id" : "f14", "to" : "f13" }
+      "connect" : [
+        { "id" : "f14", "to" : "f13" }
+      ]
     }, {
       "id" : "f13",
       "type" : "SubProcessCall",
       "name" : "excel_connector/WriteExcel",
       "config" : {
+        "processCall" : "excel_connector/WriteExcel:write(File,Recordset)",
         "call" : {
-          "params" : [
-            { "name" : "excelFile", "type" : "File" },
-            { "name" : "recordset", "type" : "Recordset" }
-          ],
           "map" : {
             "param.recordset" : "in.exportRecordset"
           },
@@ -111,7 +114,6 @@
             "}"
           ]
         },
-        "processCall" : "excel_connector/WriteExcel:write(File,Recordset)",
         "output" : {
           "map" : {
             "out" : "in",
@@ -121,10 +123,12 @@
       },
       "visual" : {
         "at" : { "x" : 384, "y" : 224 },
-        "size" : { "width" : 160, "height" : 60 },
+        "size" : { "width" : 160 },
         "icon" : "res:/webContent/icons/excel-icon.png"
       },
-      "connect" : { "id" : "f22", "to" : "f21" }
+      "connect" : [
+        { "id" : "f22", "to" : "f21" }
+      ]
     }, {
       "id" : "f18",
       "type" : "HtmlDialogEventStart",
@@ -136,7 +140,9 @@
         "at" : { "x" : 96, "y" : 328 },
         "labelOffset" : { "x" : 12, "y" : 35 }
       },
-      "connect" : { "id" : "f16", "to" : "f15" }
+      "connect" : [
+        { "id" : "f16", "to" : "f15" }
+      ]
     }, {
       "id" : "f19",
       "type" : "HtmlDialogEnd",
@@ -178,7 +184,9 @@
       "visual" : {
         "at" : { "x" : 576, "y" : 224 }
       },
-      "connect" : { "id" : "f10", "to" : "f9" }
+      "connect" : [
+        { "id" : "f10", "to" : "f9" }
+      ]
     }, {
       "id" : "f26",
       "type" : "HtmlDialogEventStart",
@@ -190,7 +198,9 @@
         "at" : { "x" : 88, "y" : 416 },
         "labelOffset" : { "x" : 12, "y" : 35 }
       },
-      "connect" : { "id" : "f38", "to" : "f29" }
+      "connect" : [
+        { "id" : "f38", "to" : "f29" }
+      ]
     }, {
       "id" : "f27",
       "type" : "HtmlDialogEnd",
@@ -203,24 +213,21 @@
       "name" : "excel_connector/ReadExcel",
       "config" : {
         "processCall" : "excel_connector/ReadExcel:read(File)",
+        "call" : {
+          "map" : {
+            "param.excelFile" : "in.importFile"
+          }
+        },
         "output" : {
           "map" : {
             "out" : "in",
             "out.importRecordset" : "result.recordset"
           }
-        },
-        "call" : {
-          "params" : [
-            { "name" : "excelFile", "type" : "File" }
-          ],
-          "map" : {
-            "param.excelFile" : "in.importFile"
-          }
         }
       },
       "visual" : {
         "at" : { "x" : 224, "y" : 416 },
-        "size" : { "width" : 160, "height" : 60 },
+        "size" : { "width" : 160 },
         "icon" : "res:/webContent/icons/excel-icon.png"
       },
       "boundaries" : [ {
@@ -229,9 +236,13 @@
           "visual" : {
             "at" : { "x" : 280, "y" : 448 }
           },
-          "connect" : { "id" : "f36", "to" : "f35" }
+          "connect" : [
+            { "id" : "f36", "to" : "f35" }
+          ]
         } ],
-      "connect" : { "id" : "f30", "to" : "f31" }
+      "connect" : [
+        { "id" : "f30", "to" : "f31" }
+      ]
     }, {
       "id" : "f31",
       "type" : "Script",
@@ -253,9 +264,11 @@
       },
       "visual" : {
         "at" : { "x" : 432, "y" : 416 },
-        "size" : { "width" : 144, "height" : 60 }
+        "size" : { "width" : 144 }
       },
-      "connect" : { "id" : "f32", "to" : "f27" }
+      "connect" : [
+        { "id" : "f32", "to" : "f27" }
+      ]
     }, {
       "id" : "f15",
       "type" : "Script",
@@ -278,7 +291,9 @@
       "visual" : {
         "at" : { "x" : 224, "y" : 328 }
       },
-      "connect" : { "id" : "f17", "to" : "f19" }
+      "connect" : [
+        { "id" : "f17", "to" : "f19" }
+      ]
     }, {
       "id" : "f20",
       "type" : "HtmlDialogEventStart",
@@ -296,7 +311,9 @@
         "at" : { "x" : 96, "y" : 256 },
         "labelOffset" : { "x" : 12, "y" : 35 }
       },
-      "connect" : { "id" : "f24", "to" : "f11" }
+      "connect" : [
+        { "id" : "f24", "to" : "f11" }
+      ]
     }, {
       "id" : "f28",
       "type" : "HtmlDialogEventStart",
@@ -314,7 +331,9 @@
         "at" : { "x" : 96, "y" : 192 },
         "labelOffset" : { "x" : 12, "y" : 35 }
       },
-      "connect" : { "id" : "f8", "to" : "f11" }
+      "connect" : [
+        { "id" : "f8", "to" : "f11" }
+      ]
     }, {
       "id" : "f3",
       "type" : "HtmlDialogEventStart",
@@ -326,7 +345,9 @@
         "at" : { "x" : 96, "y" : 136 },
         "labelOffset" : { "x" : 9, "y" : 35 }
       },
-      "connect" : { "id" : "f5", "to" : "f4" }
+      "connect" : [
+        { "id" : "f5", "to" : "f4" }
+      ]
     }, {
       "id" : "f4",
       "type" : "HtmlDialogExit",
@@ -349,6 +370,8 @@
       "visual" : {
         "at" : { "x" : 424, "y" : 480 }
       },
-      "connect" : { "id" : "f37", "to" : "f27" }
+      "connect" : [
+        { "id" : "f37", "to" : "f27" }
+      ]
     } ]
 }
