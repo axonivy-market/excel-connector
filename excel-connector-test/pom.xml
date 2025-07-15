@@ -12,10 +12,6 @@
   <artifactId>excel-connector-test</artifactId>
   <version>13.1.1-SNAPSHOT</version>
   <packaging>iar</packaging>
-  <properties>
-    <tester.version>12.0.1</tester.version>
-    <project.build.plugin.version>12.0.0</project.build.plugin.version>
-  </properties>
   <dependencies>
     <dependency>
       <groupId>com.axonivy.connector.excel</groupId>
