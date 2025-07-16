@@ -5,43 +5,33 @@
   "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "persons",
-    "type" : "java.util.List<com.axonivy.connector.excel.demo.Person>",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "java.util.List<com.axonivy.connector.excel.demo.Person>"
   }, {
     "name" : "exportRecordset",
-    "type" : "Recordset",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "Recordset"
   }, {
     "name" : "excelFile",
-    "type" : "File",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "File"
   }, {
     "name" : "streamedExcelFile",
-    "type" : "org.primefaces.model.StreamedContent",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "org.primefaces.model.StreamedContent"
   }, {
     "name" : "importFile",
-    "type" : "File",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "File"
   }, {
     "name" : "importRecordset",
-    "type" : "Recordset",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "Recordset"
   }, {
     "name" : "firstname",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "String"
   }, {
     "name" : "lastname",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "String"
   }, {
     "name" : "recordsetKeys",
-    "type" : "List<String>",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "List<String>"
   }, {
     "name" : "isXls",
-    "type" : "Boolean",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "Boolean"
   } ]
 }
