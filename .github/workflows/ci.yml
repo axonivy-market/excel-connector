@@ -2,9 +2,15 @@ name: CI-Build
 
 on:
   push:
+  pull_request:
   schedule:
     - cron:  '21 21 * * *'
   workflow_dispatch:
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
 
 jobs:
   build:
