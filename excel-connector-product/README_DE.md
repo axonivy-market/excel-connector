@@ -1,22 +1,21 @@
-# #Exzellieren Anschluss
-Das **#Axon #Ivy #Microsoft #Exzellieren Anschluss** unterstützt mal Arbeitsgang
-Automatisierung versehen nahtlose Interaktion mit FRAU #Exzellieren Dateien.
-Wesentliche Charakterzüge einschließen:
+# Excel-Konnektor
+** Der Axon Ivy Microsoft Excel-Konnektor **erleichtert die
+Prozessautomatisierung durch die nahtlose Interaktion mit MS Excel-Dateien. Zu
+den wichtigsten Funktionen gehören:
 
-- **#Exzellieren Datei Einfuhr**: Rechne um eine lokale FRAU #Exzellieren Datei
-  hinein irgendwelchen Efeu Recordset, aktivierend leichte #Daten Manipulation
-  innerhalb eurem dienstlichen Arbeitsgang.
-- **#Exzellieren Datei Ausfuhr**: Ausfuhr Efeu Recordsets zurück #Exzellieren
-  hinein eine FRAU Datei, sichernd leistungsstarke #Daten Ausgabe für extern
-  Nutzung.
+- **Excel-Datei-Import-**: Konvertieren Sie eine lokale MS Excel-Datei in ein
+  beliebiges Ivy-Recordset, um eine einfache Datenbearbeitung innerhalb Ihres
+  Geschäftsprozesses zu ermöglichen.
+- **Excel-Datei-Export**: Exportieren Sie Ivy-Datensätze zurück in eine MS
+  Excel-Datei und gewährleisten Sie so eine effiziente Datenausgabe für die
+  externe Verwendung.
 
-Dieser Anschluss integriert FRAU #Exzellieren hinein eure automatisiert
-workflows, machend ihm leichter zu fertigbringen #Daten Strömungen zwischen
-euren Arbeitsgängen und Tabellen.
+Dieser Konnektor integriert MS Excel in Ihre automatisierten Workflows und
+erleichtert so die Verwaltung von Datenflüssen zwischen Ihren Prozessen und
+Tabellenkalkulationen.
 
 ## Demo
 
-![#Exzellieren Anschluss Demo 1](images/screen1.png "#Exzellieren Anschluss Demo
-1") ![#Exzellieren Anschluss Demo 2](images/screen2.png "#Exzellieren Anschluss
-Demo 2") ![#Exzellieren Anschluss Demo 3](images/screen3.png "#Exzellieren
-Anschluss Demo 3")
+![Excel Connector Demo 1](images/screen1.png "Excel Connector Demo 1") ![Excel
+Connector Demo 2](images/screen2.png "Excel Connector Demo 2") ![Excel Connector
+Demo 3](images/screen3.png "Excel Connector Demo 3")
