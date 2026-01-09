@@ -10,14 +10,14 @@
 	</properties>
 
   <modules>
-    <module>${project.name}</module>
-    <module>${project.name}-demo</module>
-    <module>${project.name}-test</module>
-    <module>${project.name}-product</module>
+    <module>excel-connector</module>
+    <module>excel-connector-demo</module>
+    <module>excel-connector-test</module>
+    <module>excel-connector-product</module>
   </modules>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/axonivy-market/${project.name}.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/axonivy-market/excel-connector.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
