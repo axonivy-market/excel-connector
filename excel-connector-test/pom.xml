@@ -28,6 +28,11 @@
       <groupId>com.axonivy.ivy.api</groupId>
       <artifactId>ivy-api</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.axonivy.ivy.api</groupId>
+      <artifactId>ivy-poi-api</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <repositories>
     <repository>
