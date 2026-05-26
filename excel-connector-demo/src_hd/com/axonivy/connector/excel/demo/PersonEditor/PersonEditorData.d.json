@@ -1,37 +1,44 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "PersonEditorData",
   "namespace" : "com.axonivy.connector.excel.demo.PersonEditor",
-  "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "persons",
-    "type" : "java.util.List<com.axonivy.connector.excel.demo.Person>"
+    "type" : "java.util.List<com.axonivy.connector.excel.demo.Person>",
+    "modifiers" : [ ]
   }, {
     "name" : "exportRecordset",
-    "type" : "Recordset"
+    "type" : "Recordset",
+    "modifiers" : [ ]
   }, {
     "name" : "excelFile",
-    "type" : "File"
+    "type" : "File",
+    "modifiers" : [ ]
   }, {
     "name" : "streamedExcelFile",
-    "type" : "org.primefaces.model.StreamedContent"
+    "type" : "org.primefaces.model.StreamedContent",
+    "modifiers" : [ ]
   }, {
     "name" : "importFile",
-    "type" : "File"
+    "type" : "File",
+    "modifiers" : [ ]
   }, {
     "name" : "importRecordset",
-    "type" : "Recordset"
+    "type" : "Recordset",
+    "modifiers" : [ ]
   }, {
     "name" : "firstname",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "lastname",
-    "type" : "String"
+    "modifiers" : [ ]
   }, {
     "name" : "recordsetKeys",
-    "type" : "List<String>"
+    "type" : "List<String>",
+    "modifiers" : [ ]
   }, {
     "name" : "isXls",
-    "type" : "Boolean"
+    "type" : "Boolean",
+    "modifiers" : [ ]
   } ]
 }
