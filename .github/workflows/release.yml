@@ -9,4 +9,4 @@ permissions:
 
 jobs:
   build:
-    uses: axonivy-market/github-workflows/.github/workflows/release.yml@v6
+    uses: axonivy-market/github-workflows/.github/workflows/release.yml@v14
