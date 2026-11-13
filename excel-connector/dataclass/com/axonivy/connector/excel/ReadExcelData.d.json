@@ -1,0 +1,11 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "ReadExcelData",
+  "namespace" : "com.axonivy.connector.excel",
+  "fields" : [ {
+    "name" : "filePath"
+  }, {
+    "name" : "recordset",
+    "type" : "Recordset"
+  } ]
+}
