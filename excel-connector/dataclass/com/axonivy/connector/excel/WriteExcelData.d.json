@@ -1,0 +1,12 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "WriteExcelData",
+  "namespace" : "com.axonivy.connector.excel",
+  "fields" : [ {
+    "name" : "excelFile",
+    "type" : "File"
+  }, {
+    "name" : "recordset",
+    "type" : "Recordset"
+  } ]
+}
