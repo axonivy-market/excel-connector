@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -19,11 +18,12 @@ import ch.ivyteam.ivy.scripting.objects.Recordset;
 
 class TestExcelConnectorJavaAPI {
 
+  private static final String XLSX_FILE = "myexelfile.xlsx";
   private String excelFilePath;
 
   @BeforeEach
   void setup(@TempDir Path tempDir) throws Exception {
-    excelFilePath = tempDir.resolve("myexelfile.xlsx").toAbsolutePath().toString();
+    excelFilePath = tempDir.resolve(XLSX_FILE).toAbsolutePath().toString();
   }
 
   @Test
@@ -89,7 +89,7 @@ class TestExcelConnectorJavaAPI {
 
   @Test
   void writeAndRead_xls() throws Exception {
-    excelFilePath = StringUtils.removeEnd(excelFilePath, "x");
+    excelFilePath = Path.of(excelFilePath).resolveSibling("myexelfile.xls").toString();
     Recordset recordset = new Recordset();
     recordset.addColumn("a1", List.of("ad", "sg"));
     new ExcelWriter().execute(recordset, excelFilePath);
